@@ -1,0 +1,43 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 style="text-align: center; font-weight: bold;">Add New Employee</h3>
+      </div>
+    </div>
+  
+    <div class="card mt-3">
+      <div class="card-body">
+        <form [formGroup]="EmployeeForm" (ngSubmit)="onSubmit()">
+            <div>
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" class="form-control" />
+              <small *ngIf="EmployeeForm.get('firstName')?.touched && EmployeeForm.get('firstName')?.invalid">
+                <p style="color: red;">  First name is required.</p>
+              </small>
+            </div>
+          
+            <div>
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" />
+              <small *ngIf="EmployeeForm.get('lastName')?.touched && EmployeeForm.get('lastName')?.invalid">
+                <p style="color: red;">Last name is required</p>
+              </small>
+            </div>
+          
+            <div>
+              <label>Email</label>
+              <input type="email" formControlName="email" class="form-control" onchange="checkEmailExist" />
+              <small *ngIf="EmployeeForm.get('email')?.touched && EmployeeForm.get('email')?.invalid">
+                <p style="color: red;"> Please input  Valid Email.</p>
+            </small>
+            </div>
+        <br />
+            <button type="submit" class="btn btn-primary" [disabled]="EmployeeForm.invalid">Submit</button>
+&nbsp; &nbsp; &nbsp;
+            <a href='/' class="btn btn-warning">Employee List</a>
+          </form>
+          
+      </div>
+    </div>
+  </div>
+  
